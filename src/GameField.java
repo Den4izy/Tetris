@@ -9,7 +9,7 @@ public class GameField extends JPanel {
     public GameField() {
         setBackground(Color.BLACK);
         loadImages();
-        System.out.println();
+
     }
     //загрузка картинок
     public void loadImages(){
