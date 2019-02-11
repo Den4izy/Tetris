@@ -9,6 +9,7 @@ public class GameField extends JPanel implements ActionListener {
     private Timer timer;
     Image dotImg;
     Dot dot;
+    Figure figure = new Figure();
     public GameField() {
         setBackground(Color.BLACK);
         loadImages();
@@ -21,7 +22,13 @@ public class GameField extends JPanel implements ActionListener {
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
-        g.drawImage(dotImg,dot.dotX,dot.dotY,this);
+        g.setColor(Color.GREEN);
+        g.fillRect(16,16,160,320);
+        for(int i = 0; i < figure.arrDot.size(); i++ ){
+            g.drawImage(dotImg, figure.arrDot.get(i).dotX, figure.arrDot.get(i).dotY,this);
+        }
+
+
 
 
     }
@@ -33,13 +40,13 @@ public class GameField extends JPanel implements ActionListener {
 
     // при запуску програми
     public void start(){
-        dot = new Dot(16,16);
-        Figure figure = new Figure();
+        //dot = new Dot(16,16);
+        figure = new Figure();
         timer = new Timer(1050, this);
         timer.start();
     }
     public void move(){
-        dot.dotY = dot.dotY + 16;
+        figure.down(figure);
     }
 
     // оброблюэться при кожному спрацюваннi циклу
